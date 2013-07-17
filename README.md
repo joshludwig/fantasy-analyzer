@@ -18,3 +18,5 @@ Tasks:
 - [ ] Finish model files
 - [ ] Load all other data
 - [ ] Determine other tasks in which to take over the world
+
+Stats courtesy of Yahoo: http://sports.yahoo.com/nfl/stats
