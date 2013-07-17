@@ -16,10 +16,8 @@ class Application < Sinatra::Base
 
   configure :development do
     DataMapper::Logger.new($stdout, :debug)
-    #DataMapper.setup(:default, 'postgres://chqa:ChathamQa@bisdbd50/servicesmine')
     DataMapper.setup(:default, 'postgres://score:score@localhost:5432/ScoreAnalyzer')
     DataMapper.finalize
-    #DataMapper.setup(:default, 'mysql://test:test@b0d102/choffman')
     register Sinatra::Reloader
     set :reload_paths, ['routes/**/*.rb', 'lib/**/*.rb']
     set :logger_level, :debug
