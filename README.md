@@ -13,7 +13,7 @@ Goals of this project:
 Tasks:
 - [x] Bundler setup with all appropriate gems
 - [x] Setup modular sinatra app with working routes/views
-- [ ] Setup datamapper model files.  Everything is working in terms of connecting to the Postgres DB using datamapper.  Model files need to be completed.
+- [x] Setup datamapper using Postgres DB (Everything is working in terms of connecting to the Postgres DB using datamapper)
 - [ ] Proof of concept loading QB's and Passing Stats from spreadsheet or CSV
 - [ ] Finish model files
 - [ ] Load all other data
