@@ -1,3 +1,5 @@
 require_relative 'players'
 require_relative 'passing_stats'
 require_relative 'rushing_stats'
+require_relative 'sack_stats'
+require_relative 'fumble_stats'

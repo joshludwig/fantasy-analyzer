@@ -12,6 +12,8 @@ class Application < Sinatra::Base
   enable :method_override
   configure do
     set :app_file, __FILE__
+    set :port, 1337
+    set :bind, '0.0.0.0'
   end
 
   configure :development do
