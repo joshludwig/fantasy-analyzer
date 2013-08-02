@@ -13,4 +13,6 @@ class Player
   has n, :sack_stats
   has n, :fumble_stats
   has n, :receiving_stats
+  has n, :kickoff_return_stats
+  has n, :punt_return_stats
 end

@@ -4,6 +4,7 @@ class Application < Sinatra::Base
 
     for i in 2...qb_stats.size
       player = qb_stats[i]
+      puts player.inspect
       #load data into variables for readability
       new_player = Bulkload::load_player(player[0..2])
       Bulkload::passing_stats(player[3..11], new_player)
@@ -24,11 +25,12 @@ class Application < Sinatra::Base
 
     for i in 2...rb_stats.size
       player = rb_stats[i]
+      puts player.inspect
       #load data into variables for readability
       new_player = Bulkload::load_player(player[0..2])
-      Bulkload::rushing_stats(player[3..7], new_player)
-      Bulkload::receiving_stats(player[8..16], new_player)
-      Bulkload::fumble_stats(player[17..18], new_player)
+      Bulkload::rushing_stats(player[5..9], new_player)
+      Bulkload::receiving_stats(player[12..20], new_player)
+      Bulkload::fumble_stats(player[23..24], new_player)
     end
 
     #Example: Searches for Staffords passing yards
@@ -39,58 +41,43 @@ class Application < Sinatra::Base
   end
 
   get '/bulkload/wr' do
+    wr_stats = Bulkload::get_stats 'WR'
 
+    for i in 2...wr_stats.size
+      player = wr_stats[i]
+      puts player.inspect
+      #load data into variables for readability
+      new_player = Bulkload::load_player(player[0..2])
+      Bulkload::receiving_stats(player[5..13], new_player)
+      Bulkload::kickoff_return_stats(player[16..20], new_player)
+      Bulkload::punt_return_stats(player[23..27], new_player)
+      Bulkload::fumble_stats(player[30..31], new_player)
+    end
+
+    #Example: Searches for Staffords passing yards
+    #player = Player.all(:lastName => 'Stafford')
+    #puts player[0].passing_stats[0].yds
+
+    haml :bulkload
   end
 
   get '/bulkload/te' do
+    te_stats = Bulkload::get_stats 'TE'
 
+    for i in 2...te_stats.size
+      player = te_stats[i]
+      puts player.inspect
+      #load data into variables for readability
+      new_player = Bulkload::load_player(player[0..2])
+      Bulkload::receiving_stats(player[5..13], new_player)
+      Bulkload::rushing_stats(player[16..20], new_player)
+      Bulkload::fumble_stats(player[23..24], new_player)
+    end
+
+    #Example: Searches for Staffords passing yards
+    #player = Player.all(:lastName => 'Stafford')
+    #puts player[0].passing_stats[0].yds
+
+    haml :bulkload
   end
 end
-
-
-##load data into variables for readability
-#player = qb_stats[i]
-#puts player.inspect
-#first_name = player[0].split(' ')[0]
-#last_name = player[0].split(' ')[1]
-#team = player[1]
-#position = :QB
-#games_played = player[2].to_i
-#
-##Create new player row
-#new_player = Player.create(:firstName => first_name, :lastName => last_name, :team => team, :position => position, :gamesPlayed => games_played)
-#new_player.save
-#
-##Load passing stats into variables
-#qbRat = player[3]
-#comp = player[4]
-#att = player[5]
-#pct = player[6]
-#yds = player[7]
-#yardsPerGame = player[8]
-#yardsPerAtt = player[9]
-#td = player[10]
-#int = player[11]
-#new_passing_stats = PassingStat.create(:qbRat => qbRat, :comp => comp, :att => att, :pct => pct, :yds => yds, :yardsPerGame => yardsPerGame, :yardsPerAtt => yardsPerAtt, :td => td, :int => int, :player => new_player)
-#new_passing_stats.save
-#
-##Load rushing stats into variables
-#rushAtt = player[12]
-#yds = player[13]
-#yardsPerGame = player[14]
-#avg = player[15]
-#td = player[16]
-#new_rushing_stats = RushingStat.create(:rushAtt => rushAtt, :yds => yds, :yardsPerGame => yardsPerGame, :avg => avg, :td => td, :player => new_player)
-#new_rushing_stats.save
-#
-##Load sacked stats into variables
-#sack = player[17]
-#ydsL = player[18]
-#new_sack_stat = SackStat.create(:sack => sack, :ydsL => ydsL, :player => new_player)
-#new_sack_stat.save
-#
-##Load fumbled stats into variables
-#fum = player[19]
-#fumL = player[20]
-#new_fumble_stat = FumbleStat.create(:fum => fum, :fumL => fumL, :player => new_player)
-#new_fumble_stat.save

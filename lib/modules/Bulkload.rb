@@ -93,7 +93,25 @@ module Bulkload
     new_fumble_stat.save
   end
 
+  def self.kickoff_return_stats(stats, new_player)
+    kickReturns = stats[0]
+    yards = stats[1]
+    average = stats[2]
+    long = stats[3]
+    td = stats[4]
+    new_kickoff_return_stats = KickoffReturnStat.create(:kickReturns => kickReturns, :yards => yards, :average => average, :long => long, :td => td, :player => new_player)
+    new_kickoff_return_stats.save
+  end
 
+  def self.punt_return_stats(stats, new_player)
+    puntReturns = stats[0]
+    yards = stats[1]
+    average = stats[2]
+    long = stats[3]
+    td = stats[4]
+    new_punt_return_stats = PuntReturnStat.create(:puntReturns => puntReturns, :yards => yards, :average => average, :long => long, :td => td, :player => new_player)
+    new_punt_return_stats.save
+  end
 end
 
 
