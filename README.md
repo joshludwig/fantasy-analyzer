@@ -15,8 +15,16 @@ Tasks:
 - [x] Setup modular sinatra app with working routes/views
 - [x] Setup datamapper using Postgres DB (Everything is working in terms of connecting to the Postgres DB using datamapper)
 - [x] Proof of concept loading QB's and Passing Stats from spreadsheet or CSV
-- [ ] Finish model files
-- [ ] Load all other data
+- [x] Finish QB model files
+- [x] Load QB data
+- [x] Finish RB model files
+- [x] Load RB data
+- [x] Finish WR model files
+- [x] Load WR data
+- [x] Finish TE model files
+- [x] Load TE data
+- [ ] Finish defensive model files
+- [ ] Load defensive data
 - [ ] Determine other tasks in which to take over the world
 
 Stats courtesy of Yahoo: http://sports.yahoo.com/nfl/stats
