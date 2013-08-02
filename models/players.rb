@@ -12,4 +12,5 @@ class Player
   has n, :rushing_stats
   has n, :sack_stats
   has n, :fumble_stats
+  has n, :receiving_stats
 end

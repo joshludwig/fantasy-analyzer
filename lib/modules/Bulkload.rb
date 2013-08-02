@@ -63,6 +63,20 @@ module Bulkload
     new_rushing_stats.save
   end
 
+  def self.receiving_stats(stats, new_player)
+    receptions = stats[0]
+    target = stats[1]
+    yards = stats[2]
+    yardsPerGame = stats[3]
+    average = stats[4]
+    long = stats[5]
+    yardsAfterCatch = stats[6]
+    firstDown = stats[7]
+    td = stats[8]
+    new_receiving_stats = ReceivingStat.create(:receptions => receptions, :target => target, :yards => yards, :yardsPerGame => yardsPerGame, :average => average, :long => long, :yardsAfterCatch => yardsAfterCatch, :firstDown => firstDown, :td => td,:player => new_player)
+    new_receiving_stats.save
+  end
+
   def self.sacked_stats(stats, new_player)
     #Load sacked stats into variables
     sack = stats[0]

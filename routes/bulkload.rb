@@ -23,29 +23,12 @@ class Application < Sinatra::Base
     rb_stats = Bulkload::get_stats 'RB'
 
     for i in 2...rb_stats.size
-      #load data into variables for readability
       player = rb_stats[i]
-      first_name = player[0].split(' ')[0]
-      last_name = player[0].split(' ')[1]
-      team = player[1]
-      position = :RB
-      games_played = player[2].to_i
-
-      #Create new player row
-      new_player = Player.create(:firstName => first_name, :lastName => last_name, :team => team, :position => position, :gamesPlayed => games_played)
-      new_player.save
-
-      #Load rushing stats into variables
-      rushAtt = player[3]
-      yds = player[4]
-      yardsPerGame = player[5]
-      avg = player[6]
-      td = player[7]
-      new_rushing_stats = RushingStat.create(:rushAtt => rushAtt, :yds => yds, :yardsPerGame => yardsPerGame, :avg => avg, :td => td, :player => new_player)
-      new_rushing_stats.save
-
-      #load recieving stats
-
+      #load data into variables for readability
+      new_player = Bulkload::load_player(player[0..2])
+      Bulkload::rushing_stats(player[3..7], new_player)
+      Bulkload::receiving_stats(player[8..16], new_player)
+      Bulkload::fumble_stats(player[17..18], new_player)
     end
 
     #Example: Searches for Staffords passing yards
